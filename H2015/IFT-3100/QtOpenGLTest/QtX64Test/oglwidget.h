@@ -15,6 +15,8 @@ public:
 	OGLWidget(QWidget* parent) : QOpenGLWidget(parent) { }
 	~OGLWidget();
 
+	void saveImage();
+
 protected:
 	void initializeGL();
 	void resizeGL(int w, int h);

@@ -12,6 +12,9 @@ public:
 	QtX64Test(QWidget *parent = 0);
 	~QtX64Test();
 
+public slots:
+	void savingImage();
+
 private:
 	Ui::QtX64TestClass ui;
 };

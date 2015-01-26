@@ -38,21 +38,53 @@ void OGLWidget::initializeGL()
 
 	srand(time(NULL));
 
-	for (int i = 0; i < 1000; i++)
-	{
-		float z = rng();
+	Colorf colorP(0, 0.5f, 1);
+	Colorf colorS(0, 1, 1);
 
-		Triangle* t = new Triangle(Point(rng(), rng(), z),
-								   Point(rng(), rng(), z),
-								   Point(rng(), rng(), z));
+	/*Triangle* t = new Triangle(Point(-0.25f,0, -1),
+		Point(0.25f,0, -1),
+		Point(0,0.5f, -1));
+
+	t->setColorf(colorP);
+	t->setSummitAColor(colorS);
+	t->setSummitBColor(colorS);
+
+	m_shapesToDraw.push_back(t);
+
+	t = new Triangle(Point(-0.5f, -0.5f, -1),
+		Point(0,-0.5f, -1),
+		Point(-0.25f,0, -1));
+
+	t->setColorf(colorP);
+	t->setSummitCColor(colorS);
+
+	m_shapesToDraw.push_back(t);
+
+	t = new Triangle(Point(0,-0.5f, -1),
+		Point(0.5f,-0.5f, -1),
+		Point(0.25f,0, -1));
+
+	t->setColorf(colorP);
+	t->setSummitCColor(colorS);
+
+	m_shapesToDraw.push_back(t);*/
+
+	for (int i = 0; i < 10000; i++)
+	{
+		float transparency = 0.1f;
+
+		Triangle* t = new Triangle(Point(rng(), rng(), rng()),
+								   Point(rng(), rng(), rng()),
+								   Point(rng(), rng(), rng()));
 
 		t->setSummitAColor(Colorf(rng(), rng(), rng(), rng()));
 		t->setSummitBColor(Colorf(rng(), rng(), rng(), rng()));
 		t->setSummitCColor(Colorf(rng(), rng(), rng(), rng()));
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(10));
 		m_shapesToDraw.push_back(t);
 	}
+
+	this->renderTriangle();
 }
 
 void OGLWidget::resizeGL(int w, int h)
@@ -137,4 +169,10 @@ string OGLWidget::readShaderCode(const char* fileName)
 		exit;
 
 	return std::string(std::istreambuf_iterator<char>(input), std::istreambuf_iterator<char>());
+}
+
+void OGLWidget::saveImage()
+{
+	QImage test = this->grabFramebuffer();
+	test.save("hello.png", "PNG");
 }
