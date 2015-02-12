@@ -38,10 +38,10 @@ void OGLWidget::initializeGL()
 
 	srand(time(NULL));
 
-	Colorf colorP(0, 0.5f, 1);
-	Colorf colorS(0, 1, 1);
+	/*Colorf colorP(1,0.8f,0);
+	Colorf colorS(1,0.5f,0);
 
-	/*Triangle* t = new Triangle(Point(-0.25f,0, -1),
+	Triangle* t = new Triangle(Point(-0.25f,0, -1),
 		Point(0.25f,0, -1),
 		Point(0,0.5f, -1));
 
@@ -69,7 +69,7 @@ void OGLWidget::initializeGL()
 
 	m_shapesToDraw.push_back(t);*/
 
-	for (int i = 0; i < 10000; i++)
+	for (int i = 0; i < 50; i++)
 	{
 		float transparency = 0.1f;
 
